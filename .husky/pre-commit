@@ -1,0 +1,14 @@
+echo "\n=== pre-commit hook ==="
+
+# Check if there are any TypeScript files in src or test directories that are staged
+TS_FILES_CHANGED=$(git diff --staged --name-only --diff-filter=ACMR | grep -E '^(src|test).*\.ts$' || true)
+
+if [ -n "$TS_FILES_CHANGED" ]; then
+  echo "\n 1. TypeScript files changed, running tests..."
+  pnpm test
+else
+  echo "\n 1. No TypeScript files changed, skipping tests."
+fi
+
+echo "\n 2. lint & format staged files..."
+pnpm lint-staged
