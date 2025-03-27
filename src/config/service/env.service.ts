@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { env } from './env';
+import { env } from '../env';
 
 type LoadedEnv = ReturnType<typeof env>;
 
