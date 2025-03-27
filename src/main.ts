@@ -1,16 +1,16 @@
 import { NestiaSwaggerComposer } from '@nestia/sdk';
-import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { LoggerService } from './common/logger';
 import { EnvService } from './config/env.service';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   const logger = new LoggerService({
     prefix: 'MeshedAPI-AI',
   });
-  const app: INestApplication = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger,
   });
 
@@ -27,6 +27,10 @@ async function bootstrap() {
     ],
   });
   SwaggerModule.setup('doc', app, document as OpenAPIObject);
+
+  app.useBodyParser('json', {
+    limit: '100mb',
+  });
 
   await app.listen(port);
   logger.log(`Application is running on: http://localhost:${port}`, 'Bootstrap');
