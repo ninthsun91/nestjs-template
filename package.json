@@ -1,8 +1,8 @@
 {
-  "name": "api-ai",
+  "name": "nestjs-template",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "NestJS Template",
+  "author": "ninthsun91",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
