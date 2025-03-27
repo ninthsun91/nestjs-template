@@ -86,8 +86,8 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "pnpm lint",
-      "pnpm format"
+      "prettier --write",
+      "eslint --fix --quiet"
     ]
   },
   "jest": {
