@@ -6,5 +6,5 @@ export function env() {
     database: {
       url: process.env.DATABASE_URL || '',
     },
-  };
+  }
 }
