@@ -7,6 +7,8 @@ A production-ready NestJS template with modern features and best practices.
 ### Core
 - Built with latest NestJS features and TypeScript
 - PNPM as the default package manager for faster, disk-efficient package management
+- ESLint with `@stylistic/eslint-plugin` for code formatting and linting
+  > Note: Prettier is intentionally not used as its auto formatting, especially line breaking, can make NestJS code less readable, and it provides very limited customization options.
 - Git hooks with Husky, lint-staged, and commit-lint for code quality enforcement
 
 ### API Development
@@ -26,3 +28,8 @@ A production-ready NestJS template with modern features and best practices.
 3. Set up your environment variables
 4. Set up DB and run migrations: `pnpm db:dev`
 5. Start the development server: `pnpm start:dev`
+
+## Required Extensions
+
+For the best development experience, install:
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - For code formatting and linting
