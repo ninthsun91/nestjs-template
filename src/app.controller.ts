@@ -1,6 +1,6 @@
 import { TypedBody, TypedParam, TypedRoute } from '@nestia/core';
 import { Controller, NotFoundException } from '@nestjs/common';
-import { AppService } from './app.service';
+import { AppService, UserError } from './app.service';
 import type { User, CreateUserRequest } from 'src/types/user';
 
 @Controller()
@@ -19,11 +19,14 @@ export class AppController {
 
   @TypedRoute.Get('/user/:id')
   getUser(@TypedParam('id') id: string): User {
-    const user = this.appService.getUser(id);
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
+    try {
+      return this.appService.getUser(id);
+    } catch (error) {
+      if (error instanceof UserError) {
+        throw new NotFoundException(error.toString());
+      }
 
-    return user;
+      throw error;
+    }
   }
 }
