@@ -15,8 +15,16 @@ export class LoggerService extends ConsoleLogger {
     this.formatAndCallSuper('log', message, context);
   }
 
-  error(message: string, context?: string, trace?: string): void {
-    this.formatAndCallSuper('error', message, context, trace);
+  error(error: Error): void;
+  error(message: string, trace?: unknown, context?: string): void;
+  error(errorOrMessage: Error | string, trace?: unknown, context?: string): void {
+    if (errorOrMessage instanceof Error) {
+      this.formatAndCallSuper('error', errorOrMessage.toString(), context, errorOrMessage.stack);
+    } else if (trace instanceof Error) {
+      this.formatAndCallSuper('error', errorOrMessage, context, trace.stack);
+    } else {
+      this.formatAndCallSuper('error', errorOrMessage, context);
+    }
   }
 
   warn(message: string, context?: string): void {
