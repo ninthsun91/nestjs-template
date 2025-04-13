@@ -28,10 +28,10 @@
     "prepare": "ts-patch install && husky || true"
   },
   "dependencies": {
-    "@nestia/core": "^5.0.0",
-    "@nestia/e2e": "^0.8.3",
-    "@nestia/fetcher": "^5.0.0",
-    "@nestia/sdk": "^5.0.0",
+    "@nestia/core": "^6.0.1",
+    "@nestia/e2e": "^6.0.1",
+    "@nestia/fetcher": "^6.0.1",
+    "@nestia/sdk": "^6.0.1",
     "@nestjs/common": "^11.0.16",
     "@nestjs/core": "^11.0.16",
     "@nestjs/platform-express": "^11.0.16",
@@ -42,14 +42,14 @@
     "lodash": "^4.17.21",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
-    "typia": "^8.2.0"
+    "typia": "^9.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.24.0",
-    "@nestia/benchmark": "^0.4.3",
+    "@nestia/benchmark": "^6.0.1",
     "@nestjs/cli": "^11.0.6",
     "@nestjs/config": "^4.0.2",
     "@nestjs/schematics": "^11.0.5",
