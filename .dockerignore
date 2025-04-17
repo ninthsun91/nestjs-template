@@ -1,0 +1,48 @@
+# Development environments and tools
+.cursor
+.git
+.github
+.temp
+.idea
+.vscode
+.husky
+
+# Build and test artifacts
+coverage
+dist
+test
+.eslintcache
+.nyc_output
+
+# Dependencies
+node_modules
+packages
+.pnpm-store
+.npmrc
+.yarnrc
+.pnpmrc
+
+# Environment files
+env/*
+.env
+.env*
+
+# Logs
+logs
+*.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Docker files
+.dockerignore
+Dockerfile*
+docker-compose*
+
+# Documentation
+README.md
+LICENSE
+
+# OS specific
+.DS_Store
