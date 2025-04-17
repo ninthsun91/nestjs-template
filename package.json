@@ -24,6 +24,7 @@
     "db:studio": "prisma studio",
     "======================project management======================": "",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint:ci": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "clean": "rimraf dist",
     "prepare": "ts-patch install && husky || true"
   },

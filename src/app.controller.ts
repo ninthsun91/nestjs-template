@@ -1,12 +1,14 @@
 import { TypedBody, TypedParam, TypedRoute } from '@nestia/core'
 import { Controller, NotFoundException } from '@nestjs/common'
 import { AppService, UserError } from './app.service'
+import { IgnoreAuth } from './common/auth'
 import type { User, CreateUserRequest } from 'src/types/user'
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @IgnoreAuth()
   @TypedRoute.Get('/health')
   getHealthCheck(): string {
     return this.appService.healthCheck()
