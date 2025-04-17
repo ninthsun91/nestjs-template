@@ -12,7 +12,7 @@ import { EnvService } from './config/service'
 
 async function bootstrap() {
   const logger = new LoggerService({
-    prefix: 'MeshedAPI-AI',
+    prefix: 'MyApp',
   })
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger,
