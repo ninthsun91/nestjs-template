@@ -21,6 +21,10 @@ A production-ready NestJS template with modern features and best practices.
 - Prisma ORM integration for type-safe database operations
 - Database migrations and schema management
 
+### Deployment & CI/CD
+- Docker support with included Dockerfile for containerization
+- GitHub Actions workflow for Continuous Integration
+
 ## Getting Started
 
 1. Clone the repository
