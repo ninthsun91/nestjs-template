@@ -17,29 +17,31 @@ RUN corepack enable
 FROM base AS deps
 
 WORKDIR /app
-
-# Copy only package files and prisma schema first
-COPY package.json pnpm-lock.yaml* ./
-COPY prisma ./prisma/
+COPY package.json ./
+COPY pnpm-lock.yaml ./
+COPY prisma/schema.prisma ./prisma/schema.prisma
 
 ENV DOCKER_BUILD=true
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm add -D prisma
 RUN pnpm prisma generate
-RUN pnpm ts-patch install
 
 
 ##############################
 ## Build Stage              ##
 ##############################
-FROM deps AS build
+FROM base AS build
 
-# Copy source files after dependencies are installed
-COPY src ./src/
-COPY tsconfig*.json nest-cli.json ./
+WORKDIR /app
+COPY package.json ./
+COPY pnpm-lock.yaml ./
+COPY prisma/schema.prisma ./prisma/schema.prisma
+COPY src/ ./src/
+COPY tsconfig.json ./tsconfig.json
+COPY tsconfig.build.json ./tsconfig.build.json
 
-# Build the application
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm prisma generate
 RUN pnpm build
 
 
@@ -50,8 +52,6 @@ FROM base
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/prisma ./prisma
-COPY --from=deps /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=build /app/dist ./dist
 COPY package.json ./
 
