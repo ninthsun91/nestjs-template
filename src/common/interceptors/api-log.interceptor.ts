@@ -53,6 +53,10 @@ export class APILogInterceptor implements NestInterceptor {
   }
 
   private maskHeaders(headers: IncomingHttpHeaders): IncomingHttpHeaders | null {
+    if (headers.authorization) {
+      const [type, token] = headers.authorization.split(' ')
+      headers.authorization = `${type} access-token(length: ${token.length})`
+    }
     return headers
   }
 
