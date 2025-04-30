@@ -8,7 +8,7 @@ import helmet from 'helmet'
 import { AppModule } from './app.module'
 import { LoggerService } from './common/logger'
 import { API_VERSION, GLOBAL_PREFIX } from './config/constants'
-import { EnvService } from './config/service'
+import { EnvService } from './config/env'
 
 async function bootstrap() {
   const logger = new LoggerService({

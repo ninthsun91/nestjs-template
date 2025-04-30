@@ -1,4 +1,4 @@
-export function env() {
+export function loadEnv() {
   return {
     nodeEnv: process.env.NODE_ENV || 'development',
     deployEnv: process.env.DEPLOY_ENV || 'development',

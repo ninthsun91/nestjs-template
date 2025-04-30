@@ -1,8 +1,8 @@
 import { Injectable, InternalServerErrorException, Logger, OnModuleInit } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { env } from '../env'
+import { loadEnv } from '../env'
 
-type LoadedEnv = ReturnType<typeof env>
+type LoadedEnv = ReturnType<typeof loadEnv>
 
 @Injectable()
 export class EnvService implements OnModuleInit {
@@ -26,7 +26,7 @@ export class EnvService implements OnModuleInit {
   }
 
   private checkUndefinedValues() {
-    const loadedEnv = env()
+    const loadedEnv = loadEnv()
     const missingVars: string[] = []
 
     if (loadedEnv) {
