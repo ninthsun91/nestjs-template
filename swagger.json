@@ -1,0 +1,139 @@
+{
+  "openapi": "3.1.0",
+  "servers": [
+    {
+      "url": "https://my-service.com",
+      "description": "Production"
+    }
+  ],
+  "info": {
+    "version": "0.0.1",
+    "title": "nestjs-template",
+    "description": "NestJS Template",
+    "license": {
+      "name": "UNLICENSED"
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-samchon-accessor": [
+          "health",
+          "getHealthCheck"
+        ],
+        "x-samchon-controller": "AppController"
+      }
+    },
+    "/user": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "x-samchon-accessor": [
+          "user",
+          "postUser"
+        ],
+        "x-samchon-controller": "AppController"
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "x-samchon-accessor": [
+          "user",
+          "getUser"
+        ],
+        "x-samchon-controller": "AppController"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "x-samchon-emended-v4": true
+}
